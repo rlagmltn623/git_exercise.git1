@@ -4,18 +4,20 @@ from selenium import webdriver
 import time, random
 from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.webdriver import WebDriver
+from selenium.webdriver.chrome.options import Options
+import chromedriver_autoinstaller
 
-driver: WebDriver = webdriver.Chrome(
-    executable_path="C:/temp/chromedriver.exe"
-)
+chromedriver_autoinstaller.install()
+chrome_options = Options()
+driver = webdriver.Chrome(options=chrome_options)
 
 url = "https://www.instagram.com/accounts/login/?source=auth_switcher"
 driver.get(url)
 
 time.sleep(3)
-driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[2]/div/label/input').send_keys("oceanfog1@gmail.com")
-driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/div/label/input').send_keys("1234@Asdf")
-driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[4]/button/div').click()
+driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[1]/div/label/input ').send_keys("oceanfog1@gmail.com")
+driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[2]/div/label/input').send_keys("1234@Asdf")
+driver.find_element_by_xpath('//*[@id="loginForm"]/div/div[3]').click()
 
 # time.sleep(3)
 # popup
